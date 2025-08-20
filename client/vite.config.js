@@ -6,9 +6,4 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(),tailwindcss()],
   base: '/Checkify.Ai/',
-  resolve:{
-    alias:{
-      "@": path.resolve(__dirname,"./src"),
-    }
-  }
 })
