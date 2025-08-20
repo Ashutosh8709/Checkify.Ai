@@ -9,7 +9,7 @@ const bodyParser=require('body-parser');
 const authRouter=require('./routes/authRouter');
 require('dotenv').config();
 const saveRouter=require('./routes/predictionRouter');
-
+const PORT=process.env.port || 8080;
 
 main().then(()=>{
     console.log("Connected to Db");
@@ -36,6 +36,6 @@ app.use('/models',saveRouter);
 
 
 
-app.listen(8080,(req,res)=>{
-    console.log("App is running on port 8080");
+app.listen(PORT,(req,res)=>{
+    console.log(`App is running on port ${PORT}`);
 });
