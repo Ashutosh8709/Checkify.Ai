@@ -1,14 +1,17 @@
 {
+  "homepage": "https://Ashutosh8709.github.io/Checkify.Ai",
   "name": "client",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
+  "dev": "vite",
+  "preview": "vite preview",
+  "build": "vite build",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
+},
+
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
@@ -17,6 +20,7 @@
     "@tailwindcss/vite": "^4.1.12",
     "axios": "^1.11.0",
     "framer-motion": "^12.23.12",
+    "gh-pages": "^6.3.0",
     "link": "^2.1.1",
     "lucide-react": "^0.539.0",
     "react": "^19.1.0",
