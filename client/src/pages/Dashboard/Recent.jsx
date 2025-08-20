@@ -13,7 +13,7 @@ const Recent = () => {
     const getPrediction = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8080/models/getPrediction/${userId}`
+          `https://checkifyai.up.railway.app/models/getPrediction/${userId}`
         );
         // sort most recent first
         const sorted = (res.data.predictions || []).sort(

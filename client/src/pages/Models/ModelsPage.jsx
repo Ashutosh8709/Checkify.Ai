@@ -137,7 +137,7 @@ export default function ModelPage() {
     setAnalysisResults(data);
     setAnalysisComplete(true);
     const userId=localStorage.getItem('userId');
-    const res=await axios.post('http://localhost:8080/models/savePrediction',{userId,modelId,confidence:data.confidence,prediction:data.prediction});
+    const res=await axios.post('https://checkifyai.up.railway.app/models/savePrediction',{userId,modelId,confidence:data.confidence,prediction:data.prediction});
     const result=res.data;
     const {success,error,message}=result;
     if(success){handleSuccess(message);}

@@ -24,7 +24,7 @@ export default function Login(){
         const {email,password}=logininfo;
         if(!email || !password) return handleError("All fields are Required");
         try{
-            const response=await axios.post('http://localhost:8080/auth/login',logininfo);
+            const response=await axios.post('https://checkifyai.up.railway.app/auth/login',logininfo);
             const result=await response.data;
             const {success,message,error,jwtToken,userId,name}=result;
             if(success){

@@ -28,7 +28,7 @@ export default function Signup(){
             return handleError('Passwords do not match');
         }
         try{
-            const response=await axios.post("http://localhost:8080/auth/signup",{name,email,phone,password});
+            const response=await axios.post("https://checkifyai.up.railway.app/auth/signup",{name,email,phone,password});
             const result=await response.data;
             const {message,success,error}=result;
             if(success){
