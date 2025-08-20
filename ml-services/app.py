@@ -20,10 +20,10 @@ app.add_middleware(
 
 # GitHub Release URLs for models
 MODEL_URLS = {
-    "brain_tumor": "./models/brain_tumor.h5",
-    "retinopathy": "./models/retinopathy.h5",
-    "osteoarthritis": "./models/osteoarthritis.h5",
-    "chest_xray": "./models/chest_xray.h5"
+    "brain_tumor": "https://github.com/Ashutosh8709/Health-Disease-Diagnosis-system/releases/download/v1.01/brain_tumor.h5",
+    "retinopathy": "https://github.com/Ashutosh8709/Health-Disease-Diagnosis-system/releases/download/v1.01/retinopathy.h5",
+    "osteoarthritis": "https://github.com/Ashutosh8709/Health-Disease-Diagnosis-system/releases/download/v1.01/osteoarthritis.h5",
+    "chest_xray": "https://github.com/Ashutosh8709/Health-Disease-Diagnosis-system/releases/download/v1.01/chest_xray.h5"
 }
 
 # Local models directory
