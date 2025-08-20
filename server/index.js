@@ -2,7 +2,7 @@ const express=require('express');
 const app=express();
 const cors=require('cors');
 const corsOptions={
-    origin:["http://localhost:5173"],
+    origin:["http://localhost:5173","https://ashutosh8709.github.io"],
 }
 const mongoose=require('mongoose');
 const bodyParser=require('body-parser');
