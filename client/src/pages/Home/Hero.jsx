@@ -17,7 +17,7 @@ const Hero = () => {
                 assessments. Get instant medical insights with cutting-edge artificial intelligence.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/dashboard" className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg cursor-pointer inline-block">
+                <Link to="/dashboard" className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg cursor-pointer inline-block sm:text-center">
                     Start Free Diagnosis
                 </Link>
                 <button className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-colors cursor-pointer">
