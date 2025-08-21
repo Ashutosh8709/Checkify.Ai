@@ -1,3 +1,4 @@
 .env
 ml-services/models/
 ml-services/.DS_Store
+node_modules/
