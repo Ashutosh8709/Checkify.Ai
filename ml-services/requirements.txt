@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+flask
+pydantic
+requests
+tensorflow
+numpy
+python-multipart
