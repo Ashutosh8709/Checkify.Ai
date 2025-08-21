@@ -115,7 +115,7 @@ export default function ModelPage() {
     formData.append("file", uploadedFile);
 
     // change URL to your Python server endpoint
-    const response = await fetch(`http://localhost:8000/predict/${modelId}`, {
+    const response = await fetch(`https://checkifyai-models.up.railway.app/predict/${modelId}`, {
       method: "POST",
       body: formData,
     });
