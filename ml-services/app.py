@@ -10,6 +10,11 @@ from typing import Dict
 app = FastAPI(title="Medical Diagnosis API", description="ML backend for diagnosis system", version="1.0")
 
 # Allow frontend (React) + Node backend to talk to this service
+
+
+#uvicorn app:app --reload.  for running in local system
+
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  
