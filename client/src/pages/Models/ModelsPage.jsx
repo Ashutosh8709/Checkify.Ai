@@ -94,6 +94,7 @@ export default function ModelPage() {
   }
 
   const handleFileInput = (e) => {
+    e.preventDefault();
     if (e.target.files && e.target.files[0]) {
       handleFile(e.target.files[0])
     }

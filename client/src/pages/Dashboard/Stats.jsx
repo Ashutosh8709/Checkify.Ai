@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Upload,Eye,Brain,Heart, } from 'lucide-react'
+import axios from 'axios'
 
 const Stats = () => {
+  const [cases,setCases]=useState(null);
+  const userId=localStorage.getItem('userId');
+  useEffect(()=>{
+    const getCheckedCases=async()=>{
+      const res=await axios.get(`https://checkifyai.up.railway.app/models/getPrediction/${userId}`);
+      const result=res.data.predictions;
+      setCases(result.length);
+    }
+    getCheckedCases();
+  },[])
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           {/* <div className="bg-white rounded-xl p-6 border border-gray-200 ">
@@ -20,7 +32,7 @@ const Stats = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600">Accuracy Rate</p>
-                <p className="text-2xl font-bold text-gray-900">94.2%</p>
+                <p className="text-2xl font-bold text-gray-900">97.5%</p>
               </div>
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
                 <Eye className="w-6 h-6 text-green-600" />
@@ -32,7 +44,7 @@ const Stats = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600">Avg. Processing</p>
-                <p className="text-2xl font-bold text-gray-900">2.3s</p>
+                <p className="text-2xl font-bold text-gray-900">2.5s</p>
               </div>
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                 <Brain className="w-6 h-6 text-purple-600" />
@@ -44,7 +56,7 @@ const Stats = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600">Cases Reviewed</p>
-                <p className="text-2xl font-bold text-gray-900">156</p>
+                <p className="text-2xl font-bold text-gray-900">{cases}</p>
               </div>
               <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
                 <Heart className="w-6 h-6 text-red-600"/>

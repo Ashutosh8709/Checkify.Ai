@@ -17,7 +17,7 @@ app = FastAPI(title="Medical Diagnosis API", description="ML backend for diagnos
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -37,8 +37,8 @@ os.makedirs(MODEL_DIR, exist_ok=True)
 
 # Model details
 MODEL_DETAILS: Dict[str, Dict] = {
-    "brain_tumor": {"classes": ["Glioma", "Meningioma", "No Tumor", "Pituitary"]},
-    "retinopathy": {"classes": ["No DR", "DR"]},
+    "brain_tumor": {"classes": ["Glioma", "Meningioma", "NO Tumor", "Pituitary"]},
+    "retinopathy": {"classes": ["Diabitic Ratinopathy", "NO Diabitic Ratinopathy"]},
     "osteoarthritis": {"classes": ["Normal", "Osteopenia", "Osteoporosis"]},
     "chest_xray": {"classes": ["COVID-19", "Normal", "Pneumonia", "Tuberculosis"]}
 }
@@ -75,6 +75,8 @@ def list_models():
     """List available diagnostic models"""
     return {"models": list(MODEL_DETAILS.keys())}
 
+
+
 @app.post("/predict/{model_name}")
 async def predict(model_name: str, file: UploadFile = File(...)):
     """Run prediction on uploaded image"""
@@ -98,8 +100,25 @@ async def predict(model_name: str, file: UploadFile = File(...)):
 
     # Predict
     preds = model.predict(img_array)
-    predicted_class = classes[int(np.argmax(preds))]
-    confidence = float(np.max(preds) * 100)
+    preds = np.array(preds)
+
+    # --- Fix: handle binary vs multi-class ---
+    if preds.shape[1] == len(classes):
+        # Multi-class (softmax) case
+        predicted_class = classes[int(np.argmax(preds))]
+        confidence = float(np.max(preds) * 100)
+        all_predictions = {classes[i]: float(preds[0][i]) for i in range(len(classes))}
+    elif len(classes) == 2 and preds.shape[1] == 1:
+        # Binary (sigmoid) case
+        prob = float(preds[0][0])
+        predicted_class = classes[1] if prob >= 0.5 else classes[0]
+        confidence = prob * 100 if predicted_class == classes[1] else (1 - prob) * 100
+        all_predictions = {
+            classes[0]: 1 - prob,
+            classes[1]: prob
+        }
+    else:
+        raise HTTPException(status_code=500, detail="Model output shape does not match class labels")
 
     # Remove temp file
     os.remove(temp_path)
@@ -108,5 +127,5 @@ async def predict(model_name: str, file: UploadFile = File(...)):
         "model": model_name,
         "prediction": predicted_class,
         "confidence": confidence,
-        "all_predictions": {classes[i]: float(preds[0][i]) for i in range(len(classes))}
+        "all_predictions": all_predictions
     }
