@@ -10,33 +10,33 @@ import { handleSuccess } from "../../utils"
 const modelData = {
   "brain_tumor": {
     name: "Brain Tumor Analysis",
-    description: "Upload X-ray images for AI-powered analysis of bone fractures, lung conditions, and abnormalities",
-    acceptedFormats: ["JPEG", "PNG", "DICOM"],
-    maxSize: "10MB",
+    description: "Upload your brain MRI scans for AI-assisted detection of brain tumors and related abnormalities, helping doctors with faster and more accurate diagnosis.",
+    acceptedFormats: ["JPEG", "JPG", "PNG"],
+    maxSize: "2MB",
     color: "bg-blue-500",
     icon: "🧠",
   },
   "retinopathy": {
     name: "Diabitic Retinopathy Detection",
-    description: "Upload skin images to identify lesions, moles, rashes, and potential dermatological conditions",
-    acceptedFormats: ["JPEG", "PNG"],
-    maxSize: "5MB",
+    description: "Upload retinal (eye) images for AI-assisted screening of diabetic retinopathy, helping detect early signs of vision problems and supporting timely treatment.",
+    acceptedFormats: ["JPEG", "JPG", "PNG"],
+    maxSize: "2MB",
     color: "bg-green-500",
     icon: "👁️",
   },
   "osteoarthritis": {
-    name: "Osteoarthritis Detection",
-    description: "Upload ECG or cardiac imaging for heart rhythm and structural abnormality analysis",
-    acceptedFormats: ["JPEG", "PNG", "PDF"],
-    maxSize: "8MB",
+    name: "Knee Osteoarthritis Detection",
+    description: "Upload knee X-ray images for AI-assisted detection of osteoarthritis, helping identify joint damage and supporting early intervention for better mobility and pain management.",
+    acceptedFormats: ["JPEG", "JPG", "PNG"],
+    maxSize: "2MB",
     color: "bg-red-500",
     icon: "🦴",
   },
   "chest_xray": {
     name: "Chest X-Ray Analysis",
-    description: "Upload microscopic images for cellular abnormality and tissue diagnosis analysis",
-    acceptedFormats: ["JPEG", "PNG", "TIFF"],
-    maxSize: "15MB",
+    description: "Upload chest X-ray images for AI-assisted screening of tuberculosis, pneumonia, COVID-19, and other lung conditions, helping in early detection and supporting faster medical care.",
+    acceptedFormats: ["JPEG", "JPG", "PNG"],
+    maxSize: "2MB",
     color: "bg-purple-500",
     icon: "🩻",
   },
@@ -261,7 +261,7 @@ const findings = generateKeyFindings(analysisResults);
                   </p>
                   <button
                     onClick={() => fileInputRef.current?.click()}
-                    className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                    className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors cursor-pointer"
                   >
                     Choose File
                   </button>
@@ -300,7 +300,7 @@ const findings = generateKeyFindings(analysisResults);
                   {!isAnalyzing && !analysisComplete && (
                     <button
                       onClick={startAnalysis}
-                      className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                      className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium cursor-pointer"
                     >
                       Start AI Analysis
                     </button>

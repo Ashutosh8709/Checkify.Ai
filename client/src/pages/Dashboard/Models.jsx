@@ -9,7 +9,7 @@ const models = [
   {
     id: "brain_tumor",
     name: "Brain Tumor Analysis",
-    description: "Advanced AI analysis of X-ray images for bone fractures, lung conditions, and abnormalities",
+    description: "Upload your brain MRI scans for AI-assisted detection of brain tumors and related abnormalities, helping doctors with faster and more accurate diagnosis.",
     icon: Brain,
     accuracy: "94.2%",
     processingTime: "2-3 seconds",
@@ -19,7 +19,7 @@ const models = [
   {
     id: "retinopathy",
     name: "Diabitic Retinopathy Detection",
-    description: "Identify skin lesions, moles, rashes, and potential dermatological conditions",
+    description: "Upload retinal (eye) images for AI-assisted screening of diabetic retinopathy, helping detect early signs of vision problems and supporting timely treatment.",
     icon: Eye,
     accuracy: "91.8%",
     processingTime: "1-2 seconds",
@@ -28,8 +28,8 @@ const models = [
   },
   {
     id: "osteoarthritis",
-    name: "Osteoarthritis Detection",
-    description: "ECG and cardiac imaging analysis for heart rhythm and structural abnormalities",
+    name: "Knee Osteoarthritis Detection",
+    description: "Upload knee X-ray images for AI-assisted detection of osteoarthritis, helping identify joint damage and supporting early intervention for better mobility and pain management.",
     icon: Bone,
     accuracy: "96.1%",
     processingTime: "3-4 seconds",
@@ -39,7 +39,7 @@ const models = [
   {
     id: "chest_xray",
     name: "Chest X-Ray Analysis",
-    description: "Microscopic image analysis for cellular abnormalities and tissue diagnosis",
+    description: "Upload chest X-ray images for AI-assisted screening of tuberculosis, pneumonia, COVID-19, and other lung conditions, helping in early detection and supporting faster medical care.",
     icon: Microscope,
     accuracy: "89.7%",
     processingTime: "4-5 seconds",
